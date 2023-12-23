@@ -3,6 +3,8 @@
     <b-container>
       <HeaderPage title="Registo" />
 
+
+
       <!--FORM--><b-row>
         <b-col cols="4"></b-col>
         <b-col cols="4">
