@@ -30,7 +30,11 @@ const animalSchema = new Schema({
     active: {
         type: Boolean,
         default: true
-    }
+    },
+    sponsor: [{
+        type: String,
+        ref: CONFIG.mongodb.collections.user
+    }],
 });
 
 module.exports = global.mongoConnection.model(CONFIG.mongodb.collections.animal, animalSchema);

@@ -38,7 +38,7 @@
         </div>
         <div class="form-group mx-sm-3 mb-5">
           <select class="form-control form-control-lg" v-model="filterExpert">
-            <option value="todos">todos os experts</option>
+            <option value="todos">todas as espécies</option>
             <option value="Anura">Anura</option>
             <option value="Equus ferus">Equus ferus</option>
             <option value="Ursus arctos">Ursus arctos</option>

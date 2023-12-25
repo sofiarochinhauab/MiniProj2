@@ -66,6 +66,11 @@
                       <b-button variant="danger" class="mr-2" @click="setComment()">
                         <i class="fas fa-comments"></i> COMENTAR
                       </b-button>
+                      <b-button :style="{color}" class="mr-2" @click="evaluate()">
+                        <i class="fas fa-comments"></i> APOIAR
+                        {{animal.sponsor.length}}
+                      </b-button>
+
                       <b-button
                         variant="outline-success"
                         class="mr-2"
@@ -107,7 +112,8 @@ export default {
   data: function() {
     return {
       animal: "",
-      comment: ""
+      comment: "",
+      color: "",
     };
   },
   computed: {
@@ -125,7 +131,7 @@ export default {
           <iframe width='460' height='315' 
             src='${videoUrl}' frameborder='0' 
             allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-            allowfullscreen></iframe> 
+            allowfullscreen></iframe>
           `,
         focusConfirm: false,
         confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK'
@@ -139,6 +145,29 @@ export default {
         focusConfirm: false,
         confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK'
       });
+    },
+    evaluate() {
+      if (!this.animal.sponsor.includes(this.getProfile._id)) {
+        this.animal.sponsor.push(this.getProfile._id);
+        this.color = "green";
+      } else {
+        this.animal.sponsor = this.animal.sponsor.filter(
+            user => user !== this.getProfile._id
+        );
+        this.color = "white";
+      }
+      this.$store.dispatch(`animal/${EDIT_ANIMAL}`, this.animal).then(
+          () => {
+            this.$alert(
+                `Obrigado por gostares do ${this.animal.name}!`,
+                "Gosto",
+                "success"
+            );
+          },
+          err => {
+            this.$alert(`${err.message}`, "Erro", "error");
+          }
+      );
     },
     generateComments() {
       let comments = "";
@@ -191,6 +220,12 @@ export default {
   },
   created() {
     this.animal = this.getAnimalsById(this.$route.params.animalId);
+
+    if (!this.animal.sponsor.includes(this.getProfile._id)) {
+      this.color = "white";
+    } else {
+      this.color = "green";
+    }
   }
 };
 </script>
