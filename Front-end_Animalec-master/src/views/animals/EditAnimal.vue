@@ -21,11 +21,21 @@
             <div class="form-group">
               <select id="sltGroup" class="form-control form-control-lg" v-model="animal.group">
                 <option value>-- SELECIONA GRUPO --</option>
-                <option value="anfibio">ANFÍBIO</option>
+                <option value="anfíbio">ANFÍBIO</option>
                 <option value="ave">AVE</option>
                 <option value="mamifero">MAMÍFERO</option>
                 <option value="peixe">PEIXE</option>
                 <option value="reptil">RÉPTIL</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select id="sltExpert" class="form-control form-control-lg" v-model="animal.expert">
+                <option value>-- SELECIONA A ESPÉCIE --</option>
+                <option value="Anura">Anura</option>
+                <option value="Equus ferus">Equus ferus</option>
+                <option value="Ursus arctos">Ursus arctos</option>
+                <option value="Canis lupus">Canis lupus</option>
+                <option value="Chrysocyon brachyurus">Chrysocyon brachyurus</option>
               </select>
             </div>
             <div class="form-group">

@@ -14,6 +14,7 @@ router.route('/')
     .post(AuthController.checkAuth, [body('name').isString(),
         body('group').isString(),
         body('description').isString(),
+        body('expert').isString(),
         body('level').isInt(),
         body('links.*.types').isAlpha(),
         body('links.*.url').isURL(),

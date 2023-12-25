@@ -6,6 +6,7 @@ const animalSchema = new Schema({
     name: String,
     group: String,
     description: String,
+    expert: String,
     links: [{
         types: String,
         url: String

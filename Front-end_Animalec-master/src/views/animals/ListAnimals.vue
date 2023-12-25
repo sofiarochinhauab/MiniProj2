@@ -4,7 +4,7 @@
       <HeaderPage title="Gestão de Animais" />
       <!--MENU TOPO-->
       <b-row class="mb-4">
-        <b-col cols="2"></b-col>
+        <b-col cols="1"></b-col>
         <b-col>
           <router-link
             :to="{name:'addAnimal'}"
@@ -22,7 +22,7 @@
 
       <!--TABLE-->
       <b-row>
-        <b-col cols="2"></b-col>
+        <b-col cols="1"></b-col>
         <b-col>
           <table class="table table-striped">
             <thead class="thead-dark">
@@ -33,34 +33,37 @@
                   <i class="fas fa-arrow-down" v-else @click="sort()"></i>
                 </th>
                 <th scope="col">GRUPO</th>
+                <th scope="col">ESPÉCIE</th>
                 <th scope="col">NÍVEL</th>
                 <th scope="col">AÇÕES</th>
+
               </tr>
             </thead>
             <tbody>
               <tr v-for="animal of animals" :key="animal._id">
                 <td class="pt-4">{{animal.name}}</td>
                 <td class="pt-4">{{animal.group}}</td>
+                <td class="pt-4">{{animal.expert}}</td>
                 <td class="pt-4">{{animal.level}}</td>
                 <td>
                   <router-link
                     :to="{name:'editAnimal', params:{animalId: animal._id}}"
                     tag="button"
-                    class="btn btn-outline-success mr-2 mt-2"
+                    class="btn btn-outline-success mr-1 mt-1"
                   >
                     <i class="fas fa-edit"></i> EDITAR
                   </router-link>
                   <button
                     @click="viewAnimal(animal._id)"
                     type="button"
-                    class="btn btn-outline-success mr-2 mt-2"
+                    class="btn btn-outline-success mr-1 mt-1"
                   >
                     <i class="fas fa-search"></i> VER
                   </button>
                   <button
                     @click="removeAnimal(animal._id)"
                     type="button"
-                    class="btn btn-outline-danger mr-2 mt-2"
+                    class="btn btn-outline-danger mr-1 mt-1"
                   >
                     <i class="fas fa-trash-alt"></i> REMOVER
                   </button>

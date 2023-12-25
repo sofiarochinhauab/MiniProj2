@@ -30,6 +30,16 @@
               </select>
             </div>
             <div class="form-group">
+              <select id="sltExpert" class="form-control form-control-lg" v-model="expert" required>
+                <option value>-- SELECIONA A ESPÉCIE --</option>
+                <option value="Anura">Anura</option>
+                <option value="Equus ferus">Equus ferus</option>
+                <option value="Ursus arctos">Ursus arctos</option>
+                <option value="Canis lupus">Canis lupus</option>
+                <option value="Chrysocyon brachyurus">Chrysocyon brachyurus</option>
+              </select>
+            </div>
+            <div class="form-group">
               <textarea
                 id="txtDescription"
                 class="form-control form-control-lg"
@@ -116,6 +126,7 @@ export default {
       group: "",
       description: "",
       level: "",
+      expert: "",
       links: [
         { types: "photo", url: "" },
         { types: "video", url: "" },

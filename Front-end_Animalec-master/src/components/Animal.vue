@@ -11,6 +11,7 @@
     >
       <b-card-text>
         <kbd>{{ animal.group }}</kbd>&nbsp;
+        <kbd>{{ animal.expert }}</kbd>&nbsp;
         <kbd style="background-color: red">nível {{ animal.level }}</kbd>
       </b-card-text>
       <b-card-text>{{animal.description}}</b-card-text>

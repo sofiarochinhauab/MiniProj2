@@ -1,7 +1,8 @@
 <template>
   <section class="page-section">
     <b-container>
-      <HeaderPage title="Animais" />
+      <HeaderPage title="Faça a diferença e apoie " />
+      <HeaderSubtitle title="Animais" />
 
       <!-- Portfolio Grid Items -->
       <b-row>
@@ -35,6 +36,16 @@
             <option value="5">nível 5</option>
           </select>
         </div>
+        <div class="form-group mx-sm-3 mb-5">
+          <select class="form-control form-control-lg" v-model="filterExpert">
+            <option value="todos">todos os experts</option>
+            <option value="Anura">Anura</option>
+            <option value="Equus ferus">Equus ferus</option>
+            <option value="Ursus arctos">Ursus arctos</option>
+            <option value="Canis lupus">Canis lupus</option>
+            <option value="Chrysocyon brachyurus">Chrysocyon brachyurus</option>
+          </select>
+        </div>
         <div class="form-group mb-5">
           <button class="btn btn-success btn-lg" @click="sortAnimals">
             <i :class="classSorter"></i> ordenar
@@ -54,10 +65,12 @@ import HeaderPage from "@/components/HeaderPage.vue";
 import { FETCH_ANIMALS } from "@/store/animals/animal.constants";
 
 import { mapGetters } from "vuex";
+import HeaderSubtitle from "@/components/HeaderSubtitle.vue";
 
 export default {
   name: "Animals",
   components: {
+    HeaderSubtitle,
     HeaderPage,
     Animal
   },
@@ -66,6 +79,7 @@ export default {
       filterName: "",
       filterGroup: "todos",
       filterLevel: "todos",
+      filterExpert: "todos",
       reverse: false,
       animals: [],
       userLevel:0
@@ -85,10 +99,8 @@ export default {
       return this.animals.filter(animal => {
         let filterNameResult = true,
           filterGroupResult = true,
-          filterLevelResult = true;
-        if (this.filterName != "") {
-          filterNameResult = animal.name.includes(this.filterName);
-        }
+          filterLevelResult = true,
+          filterExpertResult = true;
         if (this.filterName != "") {
           filterNameResult = animal.name.includes(this.filterName);
         }
@@ -98,7 +110,10 @@ export default {
         if (this.filterLevel != "todos") {
           filterLevelResult = animal.level == this.filterLevel;
         }
-        return filterNameResult && filterGroupResult && filterLevelResult;
+        if (this.filterExpert != "todos") {
+          filterExpertResult = animal.expert == this.filterExpert;
+        }
+        return filterNameResult && filterGroupResult && filterLevelResult && filterExpertResult;
       });
     }
   },
