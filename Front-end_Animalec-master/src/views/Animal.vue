@@ -66,7 +66,7 @@
                       <b-button variant="danger" class="mr-2" @click="setComment()">
                         <i class="fas fa-comments"></i> COMENTAR
                       </b-button>
-                      <b-button :style="{color}" class="mr-2" @click="evaluate()">
+                      <b-button :style="{color}" class="mr-2" @click="setSponsor()">
                         <i class="fas fa-comments"></i> APOIAR
                         {{animal.sponsor.length}}
                       </b-button>
@@ -146,7 +146,7 @@ export default {
         confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK'
       });
     },
-    evaluate() {
+    setSponsor() {
       if (!this.animal.sponsor.includes(this.getProfile._id)) {
         this.animal.sponsor.push(this.getProfile._id);
         this.color = "green";
@@ -159,7 +159,7 @@ export default {
       this.$store.dispatch(`animal/${EDIT_ANIMAL}`, this.animal).then(
           () => {
             this.$alert(
-                `Obrigado por gostares do ${this.animal.name}!`,
+                `Obrigado por apoiares do ${this.animal.name}!`,
                 "Gosto",
                 "success"
             );
